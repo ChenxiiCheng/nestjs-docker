@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: nestjs_container
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://admin:123456@postgres:5434/db
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - '8000:3000'
+
+  postgres:
+    image: postgres:13
+    container_name: postgres_container
+    restart: always
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: db
