@@ -19,3 +19,10 @@ EXPOSE 8000
 
 CMD ["node", "dist/main"]
 ```
+
+### .dockerignore
+
+```Dockerfile
+node_modules
+npm-debug.log
+```
